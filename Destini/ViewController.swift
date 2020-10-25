@@ -53,6 +53,7 @@ class ViewController: UIViewController {
         topButton.isHidden = false
         bottomButton.isHidden = false
         currentStory = 1
+        restartButton.isHidden = true
     }
 
     
@@ -86,25 +87,24 @@ class ViewController: UIViewController {
             }else{
                 currentStory = 4
                 storyTextView.text = story4
-                topButton.isHidden = true
-                bottomButton.isHidden = true
             }
             break
         case 3:
             if chosen == 1 {
                 currentStory = 6
                 storyTextView.text = story6
-                topButton.isHidden = true
-                bottomButton.isHidden = true
-                
             }else{
                 currentStory = 5
                 storyTextView.text = story5
-                topButton.isHidden = true
-                bottomButton.isHidden = true
+                
             }
             break
         default: break
+        }
+        if currentStory == 4 || currentStory == 5 || currentStory == 6 {
+            topButton.isHidden = true
+            bottomButton.isHidden = true
+            restartButton.isHidden = false
         }
         print(currentStory)
     }
@@ -112,8 +112,5 @@ class ViewController: UIViewController {
     @IBAction func restartPressed(_ sender: Any) {
         setUpUi()
     }
-    
-
-
 }
 
