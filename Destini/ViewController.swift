@@ -30,6 +30,7 @@ class ViewController: UIViewController {
     
     
     // UI Elements linked to the storyboard
+    @IBOutlet weak var restartButton: UIButton!
     @IBOutlet weak var topButton: UIButton!         // Has TAG = 1
     @IBOutlet weak var bottomButton: UIButton!      // Has TAG = 2
     @IBOutlet weak var storyTextView: UILabel!
@@ -49,18 +50,17 @@ class ViewController: UIViewController {
         storyTextView.text = story1
         topButton.setTitle("\(answer1a)", for: .normal)
         bottomButton.setTitle(" \(answer1b)", for: .normal)
+        topButton.isHidden = false
+        bottomButton.isHidden = false
+        currentStory = 1
     }
 
     
     // User presses one of the buttons
     @IBAction func buttonPressed(_ sender: UIButton) {
-        
         updateStory(chosen: sender.tag)
-        // TODO Step 4: Write an IF-Statement to update the views
-                
-        // TODO Step 6: Modify the IF-Statement to complete the story
-        
     }
+    
     
     func updateStory(chosen:Int) {
         switch currentStory {
@@ -109,7 +109,10 @@ class ViewController: UIViewController {
         print(currentStory)
     }
     
-
+    @IBAction func restartPressed(_ sender: Any) {
+        setUpUi()
+    }
+    
 
 
 }
